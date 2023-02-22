@@ -1,4 +1,4 @@
-import template_data_repo
+import politician_data
 
 import pytest
 
