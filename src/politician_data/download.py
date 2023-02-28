@@ -80,7 +80,12 @@ def flatten_data():
         str
     )
     alt_names_df = identifer_expansion(person_df, "other_names", "person_id")
-    person_df = person_df.drop(columns=["identifiers", "other_names", ])
+    person_df = person_df.drop(
+        columns=[
+            "identifiers",
+            "other_names",
+        ]
+    )
 
     posts = pd.DataFrame(pol_data["posts"]).sort_values("id")
     post_identifiers = identifer_expansion(posts, "identifiers", "post_id")
