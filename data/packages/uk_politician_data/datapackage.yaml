@@ -1,0 +1,39 @@
+name: uk_politician_data
+title: UK Politician data
+description: "TheyWorkForYou politician data as spreadsheets\n"
+version: 0.1.0
+licenses:
+- name: CC-BY-4.0
+  path: https://creativecommons.org/licenses/by/4.0/
+  title: Creative Commons Attribution 4.0 International License
+contributors:
+- title: mySociety
+  path: https://mysociety.org
+  role: author
+custom:
+  build: politician_data.download:main
+  tests:
+  - test_uk_politician_data
+  dataset_order: 0
+  download_options:
+    gate: default
+    survey: default
+    header_text: default
+  formats:
+    csv: true
+    parquet: true
+  composite:
+    xlsx:
+      include: all
+      exclude: none
+      render: true
+    sqlite:
+      include: all
+      exclude: none
+      render: true
+    json:
+      include: all
+      exclude: none
+      render: true
+  change_log:
+    0.1.0: ''

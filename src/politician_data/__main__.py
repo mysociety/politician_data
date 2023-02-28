@@ -1,4 +1,5 @@
 import rich_click as click
+from .download import download_people, flatten_data
 
 
 @click.group()
@@ -8,6 +9,16 @@ def cli():
 
 def main():
     cli()
+
+
+@cli.command()
+def download():
+    download_people()
+
+
+@cli.command()
+def flatten():
+    flatten_data()
 
 
 @cli.command()
