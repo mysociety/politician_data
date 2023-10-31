@@ -1,7 +1,7 @@
 title: Organizations
 description: List of organizations (parties)
 custom:
-  row_count: 46
+  row_count: 50
 path: organizations.parquet
 name: organizations
 profile: data-resource
@@ -29,4 +29,4 @@ schema:
     constraints:
       unique: true
     example: Alba
-hash: 6ff4731e1f8b4bd0a57870348e323913
+hash: 3b106e01a477cbe8283a5a023363c99b

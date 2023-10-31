@@ -1,7 +1,7 @@
 title: Organization identifiers
 description: Map between our organization IDs and other schemes
 custom:
-  row_count: 5
+  row_count: 10
 path: organization_identifiers.parquet
 name: organization_identifiers
 profile: data-resource
@@ -17,23 +17,33 @@ schema:
     constraints:
       unique: true
       enum:
+      - blaenau-gwent-peoples-voice
       - brexit-alliance
       - conservative
+      - independent
+      - john-marek-independent-party
       - labour
       - liberal-democrat
+      - non-attached
+      - plaid-cymru
       - ukip
-    example: brexit-alliance
+    example: blaenau-gwent-peoples-voice
   - name: identifier
     type: string
     description: The identifier of the organization in the other scheme
     constraints:
       unique: true
       enum:
+      - Q10647
+      - Q10691
+      - Q2415493
+      - Q327591
+      - Q4923798
       - Q61586635
+      - Q6246716
+      - Q9624
       - Q9626
       - Q9630
-      - Q9624
-      - Q10647
     example: Q10647
   - name: scheme
     type: string
@@ -43,4 +53,4 @@ schema:
       enum:
       - wikidata
     example: wikidata
-hash: 020bf1a377da252e7c99a27a4f1ff36e
+hash: e66893264309a7c74c5805f95625c958

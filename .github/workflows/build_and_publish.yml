@@ -26,14 +26,16 @@ jobs:
           submodules: 'recursive'
           
       - name: Run tests and try and build project
-        uses: ./.github/actions/in-dev-container
+        uses: mysociety/run-in-devcontainer@v1
         with:
           run: |
             export PATH="/root/.local/bin:$PATH"
             script/test
             dataset build --all
             dataset version auto --auto-ban major --all --publish
-            
+            dataset publish --all
+
+
       - name: Push new data
         id: auto-commit-action
         uses: stefanzweifel/git-auto-commit-action@v4

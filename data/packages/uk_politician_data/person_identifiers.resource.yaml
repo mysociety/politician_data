@@ -1,7 +1,7 @@
 title: Person identifiers
 description: Map between our person IDs and other schemes
 custom:
-  row_count: 21040
+  row_count: 21310
 path: person_identifiers.parquet
 name: person_identifiers
 profile: data-resource
@@ -29,12 +29,13 @@ schema:
     constraints:
       unique: false
       enum:
-      - historichansard_person_id
-      - datadotparl_id
-      - yournextmp
-      - pims_id
-      - wikidata
-      - historichansard_url
       - data.niassembly.gov.uk
+      - datadotparl_id
+      - historichansard_person_id
+      - historichansard_url
+      - pims_id
+      - senedd
+      - wikidata
+      - yournextmp
     example: data.niassembly.gov.uk
-hash: cb909a3ee7cf9c5a34eb05dfc706b93c
+hash: e35a43c953c5bb21744ef49e9dc9d33c

@@ -1,7 +1,7 @@
 title: Posts
 description: List of posts (generally constituencies, lists)
 custom:
-  row_count: 2370
+  row_count: 2418
 path: posts.parquet
 name: posts
 profile: data-resource
@@ -30,9 +30,10 @@ schema:
       unique: false
       enum:
       - house-of-commons
-      - scottish-parliament
       - london-assembly
       - northern-ireland-assembly
+      - scottish-parliament
+      - welsh-parliament
     example: house-of-commons
   - name: role
     type: string
@@ -40,10 +41,11 @@ schema:
     constraints:
       unique: false
       enum:
-      - Member of Parliament
-      - MSP
-      - london-assembly-member
       - MLA
+      - MS
+      - MSP
+      - Member of Parliament
+      - london-assembly-member
     example: MLA
   - name: start_date
     type: string
@@ -63,4 +65,4 @@ schema:
     constraints:
       unique: false
     example: Aberavon
-hash: 17a85ef8b8df4c9d0169852da4c70edc
+hash: 07083e6f84cd46b24cb605e58db8ca38
