@@ -47,6 +47,56 @@ def download_people():
     Path("data", "raw", "people.json").write_text(json.dumps(people, indent=2))
 
 
+def create_reduced_membership_table():
+    """
+    Create a membership table that brings in most of the details used in the pw_mp table
+    """
+    package_dir = Path("data", "packages", "uk_politician_data")
+
+    member_df = pd.read_parquet(Path(package_dir, "memberships.parquet"))
+
+    post_df = pd.read_parquet(Path(package_dir, "posts.parquet"))
+
+    df = member_df.merge(post_df, left_on="post_id", right_on="id", how="left")
+
+    # organization_id_x and organization_id_y should be merged
+    # they are mutually exclusive and one will be none for each row
+
+    short_chamber = {
+        "house-of-commons": "commons",
+        "house-of-lords": "lords",
+        "northern-ireland-assembly": "ni",
+        "scottish-parliament": "scotland",
+        "welsh-parliament": "wales",
+        "crown": "crown",
+    }
+
+    df["chamber"] = (
+        df["organization_id_x"].fillna(df["organization_id_y"]).map(short_chamber)
+    )
+    df["label"] = df["label_x"].fillna(df["label_y"])
+    df["role"] = df["role_x"].fillna(df["role_y"])
+    df
+    allowed_cols = {
+        "id_x": "membership_id",
+        "person_id": "person_id",
+        "area_name": "constituency",
+        "start_date_x": "start_date",
+        "end_date_x": "end_date",
+        "start_reason": "start_reason",
+        "end_reason": "end_reason",
+        "on_behalf_of_id": "party",
+        "chamber": "chamber",
+        "label": "label",
+        "role": "role",
+    }
+
+    df = df.rename(columns=allowed_cols)
+    df = df[allowed_cols.values()]  # type: ignore
+
+    df.to_parquet(Path(package_dir, "simple_memberships.parquet"), index=False)
+
+
 def flatten_data():
     """
     Extract flat tables from people.json
@@ -123,6 +173,7 @@ def flatten_data():
     posts.to_parquet(package_path / "posts.parquet", index=False)
     print("[blue]Writing post identifiers to file[/blue]")
     post_identifiers.to_parquet(package_path / "post_identifiers.parquet", index=False)
+    create_reduced_membership_table()
 
 
 def main():
