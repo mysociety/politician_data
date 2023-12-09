@@ -3,6 +3,7 @@ import requests
 import json
 from rich import print
 import pandas as pd
+from typing import TypeVar
 
 PEOPLE_SOURCE = (
     "https://raw.githubusercontent.com/mysociety/parlparse/master/members/people.json"
@@ -97,6 +98,80 @@ def create_reduced_membership_table():
     df.to_parquet(Path(package_dir, "simple_memberships.parquet"), index=False)
 
 
+str_or_none = TypeVar("str_or_none", str, None)
+
+
+def fix_partial_date(date: str_or_none) -> str_or_none:
+    """
+    Some dates are in the format YYYY, or YYYY-MM. This function converts
+    them to YYYY-MM-DD.
+    """
+    if date is None:
+        return date
+    if len(date) == 4:
+        return date + "-01-01"
+    elif len(date) == 7:
+        return date + "-01"
+    else:
+        return date
+
+
+def create_membership_counts():
+    """
+    Create a dataset of membership counts and time ranges
+    """
+    package_dir = Path("data", "packages", "uk_politician_data")
+
+    df = pd.read_parquet(package_dir / "simple_memberships.parquet")
+
+    df["start_date"] = df["start_date"].apply(fix_partial_date)
+    df["end_date"] = df["end_date"].apply(fix_partial_date)
+
+    # We want to create a new dataframe with value, date, chamber
+    # we are converting the start and end dates into a list of events
+    # if there is a start date, there is a value of 1
+    # if there is an end date, there is a value of -1
+
+    # we are going to use the melt function to do this
+    ndf = pd.melt(
+        df,
+        id_vars=["chamber"],
+        value_vars=["start_date", "end_date"],
+        var_name="event",
+        value_name="date",
+    ).sort_values(["chamber", "date"])
+
+    ndf["event"] = ndf["event"].replace({"start_date": 1, "end_date": -1})
+
+    allowed_chambers = ["commons", "lords", "scotland", "wales", "ni"]
+
+    def get_range_counts(df: pd.DataFrame) -> pd.DataFrame:
+
+        # remove none values - our end events that aren't interesting
+        df = df[df["date"].notna()].copy(deep=True)
+        # use cum sum to get the number of members at any given time
+        # obvs this is wrong in the early days
+        df["members_count"] = df["event"].cumsum()
+        # reduce to unique dates - get the last members count for each date
+        df = df.drop_duplicates("date", keep="last")
+        # reexpress this as ranges e.g. start_date, end_date, members_count
+        df["end_date"] = df["date"].shift(-1, fill_value="9999-12-31")
+        df = df[["date", "end_date", "members_count"]]
+        df = df.rename(columns={"date": "start_date"})
+        return df
+
+    dfs = []
+
+    for chamber, chamber_df in ndf.groupby("chamber"):
+        if chamber in allowed_chambers:
+            range_df = get_range_counts(chamber_df)
+            range_df["chamber"] = chamber
+            dfs.append(range_df)
+
+    final = pd.concat(dfs)
+    final.to_parquet(package_dir / "membership_counts.parquet", index=False)
+
+
 def flatten_data():
     """
     Extract flat tables from people.json
@@ -173,7 +248,10 @@ def flatten_data():
     posts.to_parquet(package_path / "posts.parquet", index=False)
     print("[blue]Writing post identifiers to file[/blue]")
     post_identifiers.to_parquet(package_path / "post_identifiers.parquet", index=False)
+    print("[blue]Writing reduced membership table[/blue]")
     create_reduced_membership_table()
+    print("[blue]Writing membership counts[/blue]")
+    create_membership_counts()
 
 
 def main():
