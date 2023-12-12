@@ -22,10 +22,11 @@ schema:
     description: End date of the membership count
     constraints:
       unique: false
-    example: '1768-03-16'
+    example: '1768-03-15'
   - name: members_count
     type: integer
-    description: Number of members in the chamber at this time (negative numbers reflect errors in older data)
+    description: Number of members in the chamber at this time (negative numbers reflect
+      errors in older data)
     constraints:
       unique: false
     example: -16
@@ -41,4 +42,4 @@ schema:
       - scotland
       - wales
     example: commons
-hash: 48fdb6a4b1edd9b5da4089588a8e3c61
+hash: 255ea2187250aec50fe2f361f5f4fb73

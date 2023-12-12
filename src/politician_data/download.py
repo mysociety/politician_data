@@ -116,6 +116,16 @@ def fix_partial_date(date: str_or_none) -> str_or_none:
         return date
 
 
+def minus_one_date(date: str) -> str:
+    """
+    Give one day before an ISO date
+    """
+    # special case for 9999 - don't need to do day before
+    if date == "9999-12-31":
+        return date
+    return (pd.to_datetime(date) - pd.Timedelta(days=1)).strftime("%Y-%m-%d")
+
+
 def create_membership_counts():
     """
     Create a dataset of membership counts and time ranges
@@ -146,7 +156,6 @@ def create_membership_counts():
     allowed_chambers = ["commons", "lords", "scotland", "wales", "ni"]
 
     def get_range_counts(df: pd.DataFrame) -> pd.DataFrame:
-
         # remove none values - our end events that aren't interesting
         df = df[df["date"].notna()].copy(deep=True)
         # use cum sum to get the number of members at any given time
@@ -155,7 +164,9 @@ def create_membership_counts():
         # reduce to unique dates - get the last members count for each date
         df = df.drop_duplicates("date", keep="last")
         # reexpress this as ranges e.g. start_date, end_date, members_count
-        df["end_date"] = df["date"].shift(-1, fill_value="9999-12-31")
+        df["end_date"] = (
+            df["date"].shift(-1, fill_value="9999-12-31").apply(minus_one_date)
+        )
         df = df[["date", "end_date", "members_count"]]
         df = df.rename(columns={"date": "start_date"})
         return df
