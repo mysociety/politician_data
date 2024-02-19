@@ -1,7 +1,7 @@
 title: Simple memberships
 description: Reduced version of multiple tables to bring together very common columns
 custom:
-  row_count: 46496
+  row_count: 47776
 path: simple_memberships.parquet
 name: simple_memberships
 profile: data-resource
@@ -15,7 +15,7 @@ schema:
     type: string
     description: Unique identifier for the membership
     constraints:
-      unique: true
+      unique: false
     example: uk.org.publicwhip/lord/100001
   - name: person_id
     type: string
@@ -77,4 +77,22 @@ schema:
     constraints:
       unique: false
     example: Counsellor of State
-hash: 891e87801ecfeb911493c8eb77d12008
+  - name: first_name
+    type: string
+    description: First name of the person
+    constraints:
+      unique: false
+    example: ''
+  - name: last_name
+    type: string
+    description: Last name of the person
+    constraints:
+      unique: false
+    example: ''
+  - name: nice_name
+    type: string
+    description: A single string for the full name of a person.
+    constraints:
+      unique: false
+    example: ' Acheson (Viscount)'
+hash: 5899809685f96173bc38f4a90dbe7052

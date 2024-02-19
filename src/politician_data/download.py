@@ -48,6 +48,29 @@ def download_people():
     Path("data", "raw", "people.json").write_text(json.dumps(people, indent=2))
 
 
+def get_names() -> pd.DataFrame:
+
+    df = pd.read_parquet(
+        Path(
+            "data", "packages", "uk_politician_data", "person_alternative_names.parquet"
+        )
+    )
+    df = df[df["note"] == "Main"]
+    df = df.drop(columns=["note"])
+    df["last_name"] = df["family_name"].fillna(df["lordname"])
+    df["nice_name"] = df.apply(
+        lambda x: (
+            f"{x['given_name']} {x['last_name']}"
+            if pd.isna(x["honorific_prefix"])
+            else f"{x['given_name']} {x['last_name']} ({x['honorific_prefix']})"
+        ),
+        axis=1,
+    )
+
+    df = df[["person_id", "given_name", "last_name", "nice_name"]]
+    return df
+
+
 def create_reduced_membership_table():
     """
     Create a membership table that brings in most of the details used in the pw_mp table
@@ -58,7 +81,13 @@ def create_reduced_membership_table():
 
     post_df = pd.read_parquet(Path(package_dir, "posts.parquet"))
 
-    df = member_df.merge(post_df, left_on="post_id", right_on="id", how="left")
+    names_df = get_names()
+
+    df = member_df.merge(
+        names_df, left_on="person_id", right_on="person_id", how="left"
+    )
+
+    df = df.merge(post_df, left_on="post_id", right_on="id", how="left")
 
     # organization_id_x and organization_id_y should be merged
     # they are mutually exclusive and one will be none for each row
@@ -90,6 +119,9 @@ def create_reduced_membership_table():
         "chamber": "chamber",
         "label": "label",
         "role": "role",
+        "given_name": "first_name",
+        "last_name": "last_name",
+        "nice_name": "nice_name",
     }
 
     df = df.rename(columns=allowed_cols)
