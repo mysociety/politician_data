@@ -66,8 +66,11 @@ def get_names() -> pd.DataFrame:
         ),
         axis=1,
     )
+    df = df[["person_id", "given_name", "last_name", "nice_name", "organization_id"]]
 
-    df = df[["person_id", "given_name", "last_name", "nice_name"]]
+    # we want to drop any duplicates - we want to make sure that we have a unique person_id, organization_id
+    df = df.drop_duplicates(subset=["person_id", "organization_id"])
+
     return df
 
 
@@ -81,13 +84,21 @@ def create_reduced_membership_table():
 
     post_df = pd.read_parquet(Path(package_dir, "posts.parquet"))
 
+    df = member_df.merge(post_df, left_on="post_id", right_on="id", how="left")
+
     names_df = get_names()
 
-    df = member_df.merge(
-        names_df, left_on="person_id", right_on="person_id", how="left"
+    df = df.merge(
+        names_df,
+        left_on=("person_id", "organization_id_x"),
+        right_on=("person_id", "organization_id"),
+        how="left",
     )
 
-    df = df.merge(post_df, left_on="post_id", right_on="id", how="left")
+    # at this point,  we want to make sure there are no duplicates for the id_x column
+
+    if df["id_x"].duplicated().any():
+        raise ValueError("duplicates in ID column for simple membership is duplicated")
 
     # organization_id_x and organization_id_y should be merged
     # they are mutually exclusive and one will be none for each row
