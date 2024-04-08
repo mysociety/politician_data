@@ -1,0 +1,125 @@
+title: Person names
+description: Multiple names for people
+custom:
+  row_count: 15045
+path: person_alternative_names.parquet
+name: person_alternative_names
+profile: data-resource
+scheme: file
+format: parquet
+hashing: md5
+encoding: mac-roman
+schema:
+  fields:
+  - name: person_id
+    type: string
+    description: The ID of the person
+    constraints:
+      unique: false
+    example: uk.org.publicwhip/person/10001
+  - name: family_name
+    type: string
+    description: The family name of the person
+    constraints:
+      unique: false
+    example: '&#214;pik'
+  - name: given_name
+    type: string
+    description: The given name of the person
+    constraints:
+      unique: false
+    example: ''
+  - name: note
+    type: string
+    description: A note about the name
+    constraints:
+      unique: false
+      enum:
+      - Alternate
+      - Main
+    example: Alternate
+  - name: end_date
+    type: string
+    description: The end date of the name
+    constraints:
+      unique: false
+    example: '1974-09-20'
+  - name: honorific_prefix
+    type: string
+    description: The honorific prefix of the person
+    constraints:
+      unique: false
+    example: Admiral
+  - name: start_date
+    type: string
+    description: The start date of the name
+    constraints:
+      unique: false
+    example: ''
+  - name: additional_name
+    type: string
+    description: An additional name of the person
+    constraints:
+      unique: false
+    example: ''
+  - name: county
+    type: string
+    description: The county of the person
+    constraints:
+      unique: false
+    example: ''
+  - name: lordname
+    type: string
+    description: The lord name of the person
+    constraints:
+      unique: false
+    example: ''
+  - name: lordofname
+    type: string
+    description: The lord of name of the person
+    constraints:
+      unique: false
+    example: ''
+  - name: name
+    type: string
+    description: The name of the person
+    constraints:
+      unique: false
+    example: A Cecil Walker
+  - name: lordofname_full
+    type: string
+    description: The full lord of name of the person
+    constraints:
+      unique: false
+    example: ''
+  - name: surname
+    type: string
+    description: The surname of the person
+    constraints:
+      unique: false
+    example: ''
+  - name: organization_id
+    type: string
+    description: The ID of the organization (house)
+    constraints:
+      unique: false
+    example: house-of-commons
+  - name: honorific_suffix
+    type: string
+    description: The honorific suffix of the person
+    constraints:
+      unique: false
+    example: KCMG
+  - name: additional_names
+    type: string
+    description: Additional names of the person
+    constraints:
+      unique: false
+    example: Richard
+  - name: additional__name
+    type: string
+    description: Additional name of the person
+    constraints:
+      unique: false
+    example: Ahmad
+hash: 7b7fb18b53a9ca55e7e2c9a7c26333e4
