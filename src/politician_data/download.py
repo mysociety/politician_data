@@ -56,6 +56,7 @@ def get_names() -> pd.DataFrame:
         )
     )
     df = df[df["note"] == "Main"]
+    df["end_date"] = df["end_date"].fillna("9999-12-31")
     df = df.drop(columns=["note"])
     df["last_name"] = df["family_name"].fillna(df["lordname"])
     df["nice_name"] = df.apply(
@@ -66,10 +67,9 @@ def get_names() -> pd.DataFrame:
         ),
         axis=1,
     )
-    df = df[["person_id", "given_name", "last_name", "nice_name", "organization_id"]]
-
-    # we want to drop any duplicates - we want to make sure that we have a unique person_id, organization_id
+    df = df.sort_values("end_date", ascending=False)
     df = df.drop_duplicates(subset=["person_id", "organization_id"])
+    df = df[["person_id", "given_name", "last_name", "nice_name", "organization_id"]]
 
     return df
 
