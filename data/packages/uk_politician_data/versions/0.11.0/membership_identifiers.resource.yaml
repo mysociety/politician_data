@@ -1,9 +1,9 @@
-title: Person identifiers
-description: Map between our person IDs and other schemes
+title: Alternative membership identifiers
+description: Map between our membership IDs and other schemes
 custom:
-  row_count: 21367
-path: person_identifiers.parquet
-name: person_identifiers
+  row_count: 41368
+path: membership_identifiers.parquet
+name: membership_identifiers
 profile: data-resource
 scheme: file
 format: parquet
@@ -11,31 +11,29 @@ hashing: md5
 encoding: mac-roman
 schema:
   fields:
-  - name: person_id
+  - name: membership_id
     type: string
-    description: Our ID of the person
+    description: The ID of the membership (unique combination of person, post, and
+      time)
     constraints:
       unique: false
-    example: uk.org.publicwhip/person/10001
+    example: uk.org.publicwhip/lord/100001
   - name: identifier
     type: string
     description: The identifier of the person in the other scheme
     constraints:
       unique: false
-    example: ''
+    example: '1'
   - name: scheme
     type: string
     description: Alternate ID scheme
     constraints:
       unique: false
       enum:
-      - data.niassembly.gov.uk
       - datadotparl_id
-      - historichansard_person_id
-      - historichansard_url
+      - historichansard_id
+      - peeragetype
       - pims_id
-      - senedd
       - wikidata
-      - yournextmp
-    example: data.niassembly.gov.uk
-hash: c967767d319c04734447017ba62fa155
+    example: datadotparl_id
+hash: 7a09e0432adfaac4638f810e237b5fb3
