@@ -24,7 +24,7 @@ jobs:
     steps:
 
       - name: Checkout repo content
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           submodules: 'recursive'
           
@@ -48,7 +48,7 @@ jobs:
       - name: Send GitHub Action trigger data to Slack workflow
         id: slack
         if: steps.auto-commit-action.outputs.changes_detected == 'true'
-        uses: slackapi/slack-github-action@v1.19.0
+        uses: slackapi/slack-github-action@v1.26.0
         with:
           payload: |
             {
@@ -74,7 +74,7 @@ jobs:
       - name: Send GitHub Action trigger data to Slack workflow (if failed)
         if: ${{ failure() }}
         id: slack-failed
-        uses: slackapi/slack-github-action@v1.19.0
+        uses: slackapi/slack-github-action@v1.26.0
         with:
           payload: |
             {
