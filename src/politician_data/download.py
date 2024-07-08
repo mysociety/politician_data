@@ -272,7 +272,7 @@ def flatten_data():
         columns={"name": "area_name"}
     )
     posts = posts.merge(areas, left_on="id", right_on="post_id", how="left").drop(
-        columns=["post_id", "identifiers", "area"]
+        columns=["post_id", "identifiers", "area", "other_names"]
     )
 
     # write out to csv
