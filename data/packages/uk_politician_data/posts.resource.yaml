@@ -1,7 +1,7 @@
 title: Posts
 description: List of posts (generally constituencies, lists)
 custom:
-  row_count: 2418
+  row_count: 3068
 path: posts.parquet
 name: posts
 profile: data-resource
@@ -11,6 +11,12 @@ hashing: md5
 encoding: cp1254
 schema:
   fields:
+  - name: end_date
+    type: string
+    description: Date this post ends
+    constraints:
+      unique: false
+    example: '1821'
   - name: id
     type: string
     description: The ID of the post
@@ -40,12 +46,6 @@ schema:
     description: The role of the person in the post
     constraints:
       unique: false
-      enum:
-      - MLA
-      - MS
-      - MSP
-      - Member of Parliament
-      - london-assembly-member
     example: MLA
   - name: start_date
     type: string
@@ -53,16 +53,16 @@ schema:
     constraints:
       unique: false
     example: '1265'
-  - name: end_date
-    type: string
-    description: Date this post ends
-    constraints:
-      unique: false
-    example: '1821'
   - name: area_name
     type: string
     description: The name of the area the post represents
     constraints:
       unique: false
-    example: Aberavon
-hash: 07083e6f84cd46b24cb605e58db8ca38
+    example: Aberafan Maesteg
+  - name: other_names
+    type: string
+    description: Other names for the post
+    constraints:
+      unique: false
+    example: None
+hash: 542337b1b77de9c57432cb063cb6913d
