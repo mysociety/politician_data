@@ -1,0 +1,36 @@
+title: Post Identifiers
+description: Map between our IDs for posts and alternative schemes
+custom:
+  row_count: 2841
+path: post_identifiers.parquet
+name: post_identifiers
+profile: data-resource
+scheme: file
+format: parquet
+hashing: md5
+encoding: cp1254
+schema:
+  fields:
+  - name: post_id
+    type: string
+    description: The ID of the post
+    constraints:
+      unique: true
+    example: uk.org.publicwhip/cons/1
+  - name: identifier
+    type: string
+    description: The identifier of the post in the other scheme
+    constraints:
+      unique: true
+    example: '1'
+  - name: scheme
+    type: string
+    description: Alternate ID scheme
+    constraints:
+      unique: false
+      enum:
+      - gss
+      - historichansard_id
+      - wikidata
+    example: gss
+hash: d5a0c9bc494efff83f9fae97b84c32e0
