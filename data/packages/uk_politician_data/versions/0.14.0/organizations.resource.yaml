@@ -1,0 +1,32 @@
+title: Organizations
+description: List of organizations (parties)
+custom:
+  row_count: 51
+path: organizations.parquet
+name: organizations
+profile: data-resource
+scheme: file
+format: parquet
+hashing: md5
+encoding: cp1252
+schema:
+  fields:
+  - name: classification
+    type: string
+    description: The type of organization
+    constraints:
+      unique: false
+    example: party
+  - name: id
+    type: string
+    description: The ID of the organization (party)
+    constraints:
+      unique: true
+    example: alba
+  - name: name
+    type: string
+    description: The name of the organization (party)
+    constraints:
+      unique: true
+    example: Alba
+hash: 612567ad74af55c5f3733e7e0779bb0f

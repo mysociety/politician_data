@@ -1,7 +1,7 @@
 name: uk_politician_data
 title: UK Politician data
 description: "TheyWorkForYou politician data as spreadsheets\n"
-version: 0.16.0
+version: 0.15.0
 licenses:
 - name: CC-BY-4.0
   path: https://creativecommons.org/licenses/by/4.0/
@@ -53,4 +53,3 @@ custom:
     0.13.0: 'Change in data for resource(s): membership_counts,memberships,simple_memberships'
     0.14.0: 'Change in data for resource(s): membership_counts,membership_identifiers,memberships,person_alternative_names,person_identifiers,persons,post_identifiers,posts,simple_memberships'
     0.15.0: 'Change in data for resource(s): membership_counts'
-    0.16.0: 'Change in data for resource(s): person_identifiers'
