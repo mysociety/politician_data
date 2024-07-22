@@ -1,7 +1,7 @@
 title: Post Identifiers
 description: Map between our IDs for posts and alternative schemes
 custom:
-  row_count: 2191
+  row_count: 2841
 path: post_identifiers.parquet
 name: post_identifiers
 profile: data-resource
@@ -29,7 +29,8 @@ schema:
     constraints:
       unique: false
       enum:
+      - gss
       - historichansard_id
       - wikidata
-    example: historichansard_id
-hash: e66954b41cb3fa572af46f5b7b274523
+    example: gss
+hash: d5a0c9bc494efff83f9fae97b84c32e0

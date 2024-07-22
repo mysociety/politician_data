@@ -1,7 +1,7 @@
 title: Simple memberships
 description: Reduced version of multiple tables to bring together very common columns
 custom:
-  row_count: 46525
+  row_count: 47177
 path: simple_memberships.parquet
 name: simple_memberships
 profile: data-resource
@@ -28,7 +28,7 @@ schema:
     description: Name of the constituency
     constraints:
       unique: false
-    example: Aberavon
+    example: Aberafan Maesteg
   - name: start_date
     type: string
     description: Start date of the membership
@@ -95,4 +95,4 @@ schema:
     constraints:
       unique: false
     example: ' Acheson (Viscount)'
-hash: c929bb7b17727a9bfc015851dce702cb
+hash: 6c94c85c727330b192a57931d059a463

@@ -35,7 +35,7 @@ jobs:
             export PATH="/root/.local/bin:$PATH"
             script/test
             dataset build --all
-            dataset version auto --auto-ban major --all --publish
+            dataset version STATIC --auto-ban major --all --publish
             dataset publish --all
 
 

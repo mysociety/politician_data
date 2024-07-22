@@ -1,7 +1,7 @@
 title: Person names
 description: Multiple names for people
 custom:
-  row_count: 15058
+  row_count: 15387
 path: person_alternative_names.parquet
 name: person_alternative_names
 profile: data-resource
@@ -122,4 +122,4 @@ schema:
     constraints:
       unique: false
     example: Ahmad
-hash: af7c547402da45bef4d9717f846a271d
+hash: 6c2e5860317590e7694feb1eb4c2e832

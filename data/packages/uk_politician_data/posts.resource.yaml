@@ -59,10 +59,4 @@ schema:
     constraints:
       unique: false
     example: Aberafan Maesteg
-  - name: other_names
-    type: string
-    description: Other names for the post
-    constraints:
-      unique: false
-    example: None
-hash: 542337b1b77de9c57432cb063cb6913d
+hash: 012ed5730d075bec2ddec432b0536a59

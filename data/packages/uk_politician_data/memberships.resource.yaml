@@ -2,7 +2,7 @@ title: Memberships
 description: Table of memberships (a membership is connection between a person, post
   and time)
 custom:
-  row_count: 46525
+  row_count: 47177
 path: memberships.parquet
 name: memberships
 profile: data-resource
@@ -91,4 +91,4 @@ schema:
     constraints:
       unique: false
     example: changed_party
-hash: bfb55e9161383e97553a215dd81aecf4
+hash: d7e2c61e0ee1002c9f612631f339cf06
