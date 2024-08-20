@@ -1,7 +1,7 @@
 title: Persons table
 description: List of people (many specific details are in the memberships table)
 custom:
-  row_count: 14582
+  row_count: 14584
 path: persons.parquet
 name: persons
 profile: data-resource
@@ -35,4 +35,4 @@ schema:
     constraints:
       unique: false
     example: Alliance
-hash: aa892c0b0768cd20f7b60604835b4bcb
+hash: 76439219b38bb7380d3d0c0c8ca13697

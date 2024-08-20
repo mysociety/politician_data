@@ -1,7 +1,7 @@
 title: Simple memberships
 description: Reduced version of multiple tables to bring together very common columns
 custom:
-  row_count: 47186
+  row_count: 47196
 path: simple_memberships.parquet
 name: simple_memberships
 profile: data-resource
@@ -95,4 +95,4 @@ schema:
     constraints:
       unique: false
     example: ' Acheson (Viscount)'
-hash: b0beab799acfe1a2a1247df333d57620
+hash: 7394a126b31c3938f5bc12141251fd13
