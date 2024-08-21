@@ -110,16 +110,4 @@ schema:
     constraints:
       unique: false
     example: KCMG
-  - name: additional_names
-    type: string
-    description: Additional names of the person
-    constraints:
-      unique: false
-    example: Richard
-  - name: additional__name
-    type: string
-    description: Additional name of the person
-    constraints:
-      unique: false
-    example: Ahmad
-hash: 3c17ec18efcddaaf1ff91decad30bf54
+hash: eaa045136e449a2bd6e746b393a06d93

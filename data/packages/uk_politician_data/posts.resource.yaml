@@ -46,6 +46,12 @@ schema:
     description: The role of the person in the post
     constraints:
       unique: false
+      enum:
+      - MLA
+      - MS
+      - MSP
+      - Member of Parliament
+      - london-assembly-member
     example: MLA
   - name: start_date
     type: string
@@ -59,4 +65,4 @@ schema:
     constraints:
       unique: false
     example: Aberafan Maesteg
-hash: 012ed5730d075bec2ddec432b0536a59
+hash: 9f2d05093559c992ce1ba7dce9cf7dfb
