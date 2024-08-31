@@ -1,7 +1,7 @@
 title: Alternative membership identifiers
 description: Map between our membership IDs and other schemes
 custom:
-  row_count: 41385
+  row_count: 41394
 path: membership_identifiers.parquet
 name: membership_identifiers
 profile: data-resource
@@ -36,4 +36,4 @@ schema:
       - pims_id
       - wikidata
     example: datadotparl_id
-hash: 3757371b0af59ab2a35c4233dca9ec3d
+hash: 1a5281637262fb743cbece0b261bf0f4
