@@ -1,7 +1,7 @@
 title: Persons table
 description: List of people (many specific details are in the memberships table)
 custom:
-  row_count: 14589
+  row_count: 14619
 path: persons.parquet
 name: persons
 profile: data-resource
@@ -23,16 +23,4 @@ schema:
     constraints:
       unique: false
     example: uk.org.publicwhip/person/10211
-  - name: current_constituency
-    type: string
-    description: The current constituency of the person
-    constraints:
-      unique: false
-    example: Aberavon
-  - name: current_party
-    type: string
-    description: The current party of the person
-    constraints:
-      unique: false
-    example: Alliance
-hash: 7bbbd2f3ca7b11e758e0ef18bd63833a
+hash: 3cd22172b1720b999048442f28f45d9e
