@@ -249,10 +249,6 @@ def flatten_data():
     orgs_df = orgs_df.drop(columns=["identifiers"])
 
     person_df = pd.DataFrame(pol_data["persons"]).sort_values("id")
-    shortcuts_df = identifer_expansion(person_df, "shortcuts", "person_id")
-    person_df = person_df.merge(
-        shortcuts_df, left_on="id", right_on="person_id", how="left"
-    ).drop(columns=["shortcuts", "person_id"])
 
     person_identifiers_df = identifer_expansion(person_df, "identifiers", "person_id")
     person_identifiers_df["identifier"] = person_identifiers_df["identifier"].astype(
