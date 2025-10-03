@@ -2,7 +2,7 @@ title: Memberships
 description: Table of memberships (a membership is connection between a person, post
   and time)
 custom:
-  row_count: 47296
+  row_count: 47299
 path: memberships.parquet
 name: memberships
 profile: data-resource
@@ -30,6 +30,10 @@ schema:
     description: The ID of the organization this person is a member of (party)
     constraints:
       unique: false
+      enum:
+      - crown
+      - house-of-lords
+      - london-assembly
     example: crown
   - name: on_behalf_of_id
     type: string
@@ -72,12 +76,20 @@ schema:
     description: The label of the membership
     constraints:
       unique: false
+      enum:
+      - Peer
+      - Prince
+      - Queen
     example: Peer
   - name: role
     type: string
     description: The role of the person in the organization
     constraints:
       unique: false
+      enum:
+      - Counsellor of State
+      - Peer
+      - Queen
     example: Counsellor of State
   - name: redirect
     type: string
@@ -85,4 +97,13 @@ schema:
     constraints:
       unique: false
     example: uk.org.publicwhip/lord/100001
-hash: 2d45640e2d6818deca36177ea8469106
+  - name: source
+    type: string
+    description: URL associated with a change in membership status
+    constraints:
+      unique: false
+      enum:
+      - https://www.bbc.co.uk/news/articles/ce3yegn3k5vo
+      - https://www.bbc.com/news/articles/c2kn8jwj0ndo
+    example: https://www.bbc.co.uk/news/articles/ce3yegn3k5vo
+hash: 56c509aad42749674b4d839e7ad12c3f
