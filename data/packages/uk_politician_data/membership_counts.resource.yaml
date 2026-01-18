@@ -1,7 +1,7 @@
 title: Membership Counts
 description: Dataset of membership counts by chamber and date
 custom:
-  row_count: 8789
+  row_count: 8790
 path: membership_counts.parquet
 name: membership_counts
 profile: data-resource
@@ -42,4 +42,4 @@ schema:
       - scotland
       - wales
     example: commons
-hash: 0cd134a5e567f462bc10ac384123cd52
+hash: 5f850f81b1565e621b1bc2ae03c97186
