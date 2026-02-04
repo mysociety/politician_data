@@ -91,4 +91,4 @@ schema:
     constraints:
       unique: false
     example: https://www.bbc.co.uk/news/articles/c0erdwrp972o
-hash: 50db9adf716be1e7c2ecedcd34df9e37
+hash: aff0166b229f505d161bdada2ab68ebb
