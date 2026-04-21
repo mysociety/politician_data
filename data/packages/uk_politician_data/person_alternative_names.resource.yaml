@@ -1,7 +1,7 @@
 title: Person names
 description: Multiple names for people
 custom:
-  row_count: 15528
+  row_count: 15529
 path: person_alternative_names.parquet
 name: person_alternative_names
 profile: data-resource
@@ -110,4 +110,4 @@ schema:
     constraints:
       unique: false
     example: KCMG
-hash: f1db8387b6e62d158e2dbd8ee5459fb1
+hash: dd6ac877bbeb68ce69f8c83c85d68f3a
