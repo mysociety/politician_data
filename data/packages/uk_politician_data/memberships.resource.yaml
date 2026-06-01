@@ -2,7 +2,7 @@ title: Memberships
 description: Table of memberships (a membership is connection between a person, post
   and time)
 custom:
-  row_count: 47357
+  row_count: 47582
 path: memberships.parquet
 name: memberships
 profile: data-resource
@@ -91,4 +91,4 @@ schema:
     constraints:
       unique: false
     example: https://www.bbc.co.uk/news/articles/c0erdwrp972o
-hash: eb5292c9e0187ba21915df99d946cb5f
+hash: 80751fa1ee8e7210f9cf20be02b524de

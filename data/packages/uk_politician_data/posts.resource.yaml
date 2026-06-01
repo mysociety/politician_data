@@ -1,7 +1,7 @@
 title: Posts
 description: List of posts (generally constituencies, lists)
 custom:
-  row_count: 3068
+  row_count: 3165
 path: posts.parquet
 name: posts
 profile: data-resource
@@ -65,4 +65,4 @@ schema:
     constraints:
       unique: false
     example: Aberafan Maesteg
-hash: 9f2d05093559c992ce1ba7dce9cf7dfb
+hash: a6f8e67de98cc5ef2353d468012a63aa
