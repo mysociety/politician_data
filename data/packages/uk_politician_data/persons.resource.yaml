@@ -1,7 +1,7 @@
 title: Persons table
 description: List of people (many specific details are in the memberships table)
 custom:
-  row_count: 14791
+  row_count: 14792
 path: persons.parquet
 name: persons
 profile: data-resource
@@ -23,4 +23,4 @@ schema:
     constraints:
       unique: false
     example: uk.org.publicwhip/person/10211
-hash: 9282af548860f91003c6ccf8262c15c3
+hash: 8a7d2df4f1248015e9e95fb3719532c6
