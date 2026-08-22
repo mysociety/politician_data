@@ -1,7 +1,7 @@
 title: Person identifiers
 description: Map between our person IDs and other schemes
 custom:
-  row_count: 23166
+  row_count: 23170
 path: person_identifiers.parquet
 name: person_identifiers
 profile: data-resource
@@ -39,4 +39,4 @@ schema:
       - wikidata
       - yournextmp
     example: data.niassembly.gov.uk
-hash: e10ea71ee05309aa01cb09b96b6ec61f
+hash: 84eadf3213112371ebb4cb39dedb9ab9
