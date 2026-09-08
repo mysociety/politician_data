@@ -1,7 +1,7 @@
 title: Alternative membership identifiers
 description: Map between our membership IDs and other schemes
 custom:
-  row_count: 41548
+  row_count: 41824
 path: membership_identifiers.parquet
 name: membership_identifiers
 profile: data-resource
@@ -34,6 +34,7 @@ schema:
       - historichansard_id
       - peeragetype
       - pims_id
+      - sp_memberparty_id
       - wikidata
     example: datadotparl_id
-hash: 1eb9691ff0f39a10d40cbf44d3938e2c
+hash: c4fd5f5be34828ae5ac786aa831b28bc
